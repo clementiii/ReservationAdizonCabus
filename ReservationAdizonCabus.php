@@ -341,9 +341,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="logo">Hotel 102</div>
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#profile">About</a></li>
+                <li><a href="#reservation">Reservation</a></li>
+                <li><a href="#contacts">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -357,7 +357,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </section>
 
     <!-- Company Profile Section -->
-    <section class="profile">
+    <section class="profile" id="profile">
         <div class="container">
             <h2>About Hotel 102</h2>
             <p>Hotel 102 is a luxurious hotel located in the heart of the city. We offer world-class amenities, spacious
