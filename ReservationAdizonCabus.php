@@ -54,192 +54,172 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Reservation System</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f0f0f0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input, select {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-        .buttons {
-            margin-top: 20px;
-        }
-        .btn {
-            padding: 10px 20px;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-        .billing {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 4px;
-        }
-    </style>
+    <title>Hotel 102</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Hotel Reservation System</h1>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Hotel 102</h1>
+            <p>Your perfect getaway destination. Book your stay with us today!</p>
+            <a href="#reservation" class="btn">Make a Reservation</a>
         </div>
+    </section>
 
-        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-            <!-- Guest Information -->
-            <h2>Guest Information</h2>
-            <div class="form-group">
-                <label>Name:</label>
-                <input type="text" name="name" required>
-                
-                <label>Address:</label>
-                <input type="text" name="address" required>
-                
-                <label>Contact Number:</label>
-                <input type="tel" name="contact" required>
+    <!-- Company Profile Section -->
+    <section class="profile">
+        <div class="container">
+            <h2>About Hotel 102</h2>
+            <p>Hotel 102 is a luxurious hotel located in the heart of the city. We offer world-class amenities, spacious rooms, and exceptional service to ensure a memorable stay for our guests. Whether you're here for business or leisure, Hotel 102 is your home away from home.</p>
+            <p>Our mission is to provide an unforgettable experience with a blend of comfort, elegance, and convenience.</p>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation" class="reservation">
+        <div class="container">
+            <div class="header">
+                <h1>Hotel Reservation System</h1>
             </div>
 
-            <!-- Reservation Details -->
-            <h2>Reservation Details</h2>
-            <div class="form-group">
-                <label>Check-in Date:</label>
-                <input type="date" name="check_in" required>
-                
-                <label>Check-out Date:</label>
-                <input type="date" name="check_out" required>
-                
-                <label>Room Capacity:</label>
-                <select name="room_capacity" required>
-                    <option value="">Select Capacity</option>
-                    <option value="single">Single</option>
-                    <option value="double">Double</option>
-                    <option value="family">Family</option>
-                </select>
-                
-                <label>Room Type:</label>
-                <select name="room_type" required>
-                    <option value="">Select Type</option>
-                    <option value="regular">Regular</option>
-                    <option value="deluxe">De Luxe</option>
-                    <option value="suite">Suite</option>
-                </select>
+            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <!-- Guest Information -->
+                <h2>Guest Information</h2>
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" name="name" required>
+                    
+                    <label>Address:</label>
+                    <input type="text" name="address" required>
+                    
+                    <label>Contact Number:</label>
+                    <input type="tel" name="contact" required>
+                </div>
 
-                <label>Payment Type:</label>
-                <select name="payment_type" required>
-                    <option value="">Select Payment</option>
-                    <option value="cash">Cash</option>
-                    <option value="check">Check</option>
-                    <option value="credit">Credit Card</option>
-                </select>
-            </div>
+                <!-- Reservation Details -->
+                <h2>Reservation Details</h2>
+                <div class="form-group">
+                    <label>Check-in Date:</label>
+                    <input type="date" name="check_in" required>
+                    
+                    <label>Check-out Date:</label>
+                    <input type="date" name="check_out" required>
+                    
+                    <label>Room Capacity:</label>
+                    <select name="room_capacity" required>
+                        <option value="">Select Capacity</option>
+                        <option value="single">Single</option>
+                        <option value="double">Double</option>
+                        <option value="family">Family</option>
+                    </select>
+                    
+                    <label>Room Type:</label>
+                    <select name="room_type" required>
+                        <option value="">Select Type</option>
+                        <option value="regular">Regular</option>
+                        <option value="deluxe">De Luxe</option>
+                        <option value="suite">Suite</option>
+                    </select>
 
-            <!-- Room Rates Table -->
-            <h2>Room Rates</h2>
-            <table>
-                <tr>
-                    <th>Room Capacity</th>
-                    <th>Room Type</th>
-                    <th>Rate/day</th>
-                </tr>
-                <tr>
-                    <td rowspan="3">Single</td>
-                    <td>Regular</td>
-                    <td>100.00</td>
-                </tr>
-                <tr>
-                    <td>De Luxe</td>
-                    <td>300.00</td>
-                </tr>
-                <tr>
-                    <td>Suite</td>
-                    <td>500.00</td>
-                </tr>
-                <tr>
-                    <td rowspan="3">Double</td>
-                    <td>Regular</td>
-                    <td>200.00</td>
-                </tr>
-                <tr>
-                    <td>De Luxe</td>
-                    <td>500.00</td>
-                </tr>
-                <tr>
-                    <td>Suite</td>
-                    <td>800.00</td>
-                </tr>
-                <tr>
-                    <td rowspan="3">Family</td>
-                    <td>Regular</td>
-                    <td>500.00</td>
-                </tr>
-                <tr>
-                    <td>De Luxe</td>
-                    <td>750.00</td>
-                </tr>
-                <tr>
-                    <td>Suite</td>
-                    <td>1,000.00</td>
-                </tr>
-            </table>
+                    <label>Payment Type:</label>
+                    <select name="payment_type" required>
+                        <option value="">Select Payment</option>
+                        <option value="cash">Cash</option>
+                        <option value="check">Check</option>
+                        <option value="credit">Credit Card</option>
+                    </select>
+                </div>
 
-            <div class="buttons">
-                <input type="submit" name="calculate" value="Submit Reservation" class="btn">
-                <input type="reset" value="Clear Entry" class="btn">
-            </div>
+                <!-- Room Rates Table -->
+                <h2>Room Rates</h2>
+                <table>
+                    <tr>
+                        <th>Room Capacity</th>
+                        <th>Room Type</th>
+                        <th>Rate/day</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">Single</td>
+                        <td>Regular</td>
+                        <td>100.00</td>
+                    </tr>
+                    <tr>
+                        <td>De Luxe</td>
+                        <td>300.00</td>
+                    </tr>
+                    <tr>
+                        <td>Suite</td>
+                        <td>500.00</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">Double</td>
+                        <td>Regular</td>
+                        <td>200.00</td>
+                    </tr>
+                    <tr>
+                        <td>De Luxe</td>
+                        <td>500.00</td>
+                    </tr>
+                    <tr>
+                        <td>Suite</td>
+                        <td>800.00</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">Family</td>
+                        <td>Regular</td>
+                        <td>500.00</td>
+                    </tr>
+                    <tr>
+                        <td>De Luxe</td>
+                        <td>750.00</td>
+                    </tr>
+                    <tr>
+                        <td>Suite</td>
+                        <td>1,000.00</td>
+                    </tr>
+                </table>
 
-            <?php if(isset($_POST['calculate'])): ?>
-            <!-- Billing Information -->
-            <div class="billing">
-                <h2>Billing Information</h2>
-                <p><strong>Room Rate:</strong> PHP <?php echo number_format(calculateRoomRate($_POST['room_capacity'], $_POST['room_type']), 2); ?> per day</p>
-                <p><strong>Number of Days:</strong> <?php echo $days; ?></p>
-                <p><strong>Payment Type:</strong> <?php echo ucfirst($_POST['payment_type']); ?></p>
-                <?php if($_POST['payment_type'] == 'check'): ?>
-                    <p><strong>Additional Charge:</strong> 5%</p>
-                <?php elseif($_POST['payment_type'] == 'credit'): ?>
-                    <p><strong>Additional Charge:</strong> 10%</p>
-                <?php elseif($_POST['payment_type'] == 'cash' && $days >= 3): ?>
-                    <p><strong>Discount:</strong> <?php echo ($days >= 6) ? '15%' : '10%'; ?></p>
+                <div class="buttons">
+                    <input type="submit" name="calculate" value="Submit Reservation" class="btn">
+                    <input type="reset" value="Clear Entry" class="btn">
+                </div>
+
+                <?php if(isset($_POST['calculate'])): ?>
+                <!-- Billing Information -->
+                <div class="billing">
+                    <h2>Billing Information</h2>
+                    <p><strong>Room Rate:</strong> PHP <?php echo number_format(calculateRoomRate($_POST['room_capacity'], $_POST['room_type']), 2); ?> per day</p>
+                    <p><strong>Number of Days:</strong> <?php echo $days; ?></p>
+                    <p><strong>Payment Type:</strong> <?php echo ucfirst($_POST['payment_type']); ?></p>
+                    <?php if($_POST['payment_type'] == 'check'): ?>
+                        <p><strong>Additional Charge:</strong> 5%</p>
+                    <?php elseif($_POST['payment_type'] == 'credit'): ?>
+                        <p><strong>Additional Charge:</strong> 10%</p>
+                    <?php elseif($_POST['payment_type'] == 'cash' && $days >= 3): ?>
+                        <p><strong>Discount:</strong> <?php echo ($days >= 6) ? '15%' : '10%'; ?></p>
+                    <?php endif; ?>
+                    <p><strong>Total Amount:</strong> PHP <?php echo number_format($total, 2); ?></p>
+                </div>
                 <?php endif; ?>
-                <p><strong>Total Amount:</strong> PHP <?php echo number_format($total, 2); ?></p>
-            </div>
-            <?php endif; ?>
-        </form>
-    </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section class="contacts">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Have questions or need assistance? Reach out to us!</p>
+            <ul>
+                <li><strong>Phone:</strong> +1 (123) 456-7890</li>
+                <li><strong>Email:</strong> info@hotel102.com</li>
+                <li><strong>Address:</strong> 102 Luxury Street, Cityville, Country</li>
+            </ul>
+        </div>
+    </section>
 </body>
 </html>
