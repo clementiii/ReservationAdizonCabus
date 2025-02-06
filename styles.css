@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Define variables */
+:root {
+    --text: #0f0f0f;
+    --background: #faf9f8;
+    --primary: #b3865b;
+    --secondary: #e0ba96;
+    --accent: #e5a365;
+
+}
+
+
+/* General Styles */
+body {
+    font-family: "Raleway", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background);
+    color: var(--text);
+}
+
+/* Header and Navigation */
+header {
+    background-color: white; /* Or a variable */
+    padding: 10px 0; /* Adjust as needed */
+    position: sticky; /* Make it stick */
+    top: 0; /* Stick to the top */
+    z-index: 100; /* Ensure it's above other content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between; /* Distribute space between logo and links */
+    align-items: center;
+    max-width: 800px; /* Same as container */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.2rem; /* Adjust as needed */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin-left: 20px; /* Space between links */
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text); /* Or a different color */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+nav a:hover {
+    color: var(--primary); /* Highlight on hover */
+}
+
+/* Hero Section */
+.hero {
+    background: url('https://images.pexels.com/photos/225674/pexels-photo-225674.jpeg?auto=compress&cs=tinysrgb&w=1920') no-repeat center center/cover; /* Larger image */
+    color: var(--background);
+    text-align: center;
+    min-height: 100vh;
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Vertically center content */
+    align-items: center;  /* horizontally center content */
+}
+
+.hero-content {
+    max-width: 600px; /* Limit width of content */
+    margin: 0 auto; /* Center the content */
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem; /* adds margin to the bottom of the h1 */
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem; /* adds margin to the bottom of the p */
+}
+
+.hero-content .btn {
+    background: var(--primary);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.hero-content .btn:hover {
+    background: var(--secondary);
+}
+
+/* Profile Section */
+.profile {
+    background: var(--background); /* Use --background variable */
+    padding: 40px 0;
+    text-align: center;
+}
+
+.profile h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.profile p {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Reservation Section */
+.reservation {
+    padding: 40px 0;
+    background-color: white; /* Added background to improve readability */
+}
+
+.reservation .header h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.btn[type="submit"] {
+    background: var(--primary); /* Use --primary variable */
+    color: white;
+}
+
+.btn[type="submit"]:hover {
+    background: var(--secondary); /* Use --secondary variable */
+}
+
+.btn[type="reset"] {
+    background: #dc3545;
+    color: white;
+}
+
+.btn[type="reset"]:hover {
+    background: #c82333;
+}
+
+.billing {
+    margin-top: 20px;
+    padding: 20px;
+    background: var(--background); /* Use --background variable */
+    border-radius: 5px;
+}
+
+.billing h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.billing p {
+    margin: 10px 0;
+}
+
+/* Contacts Section */
+.contacts {
+    background: var(--secondary); /* Use --text variable for background */
+    color: var(--text); /* Use --background variable for text */
+    padding: 40px 0;
+    text-align: center;
+}
+
+.contacts h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.contacts ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contacts ul li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}

@@ -62,6 +62,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <!-- Hero Section -->
+    <header>
+    <nav>
+        <div class="logo">Your Logo</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    </header>
+
     <section class="hero">
         <div class="hero-content">
             <h1>Welcome to Hotel 102</h1>
