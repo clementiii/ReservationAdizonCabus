@@ -22,26 +22,27 @@ body {
 
 /* Header and Navigation */
 header {
-    background-color: white; /* Or a variable */
-    padding: 10px 0; /* Adjust as needed */
-    position: sticky; /* Make it stick */
-    top: 0; /* Stick to the top */
-    z-index: 100; /* Ensure it's above other content */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    background: var(--background);
+    padding: 1.5em; 
+    position: sticky; 
+    top: 0; 
+    z-index: 100; 
+    
 }
 
 nav {
     display: flex;
-    justify-content: space-between; /* Distribute space between logo and links */
+    justify-content: space-between; 
     align-items: center;
-    max-width: 800px; /* Same as container */
+    max-width: 800px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
 .logo {
     font-weight: bold;
-    font-size: 1.2rem; /* Adjust as needed */
+    font-size: 1.2rem;
+    color: var(--primary);
 }
 
 nav ul {
@@ -67,29 +68,44 @@ nav a:hover {
 
 /* Hero Section */
 .hero {
-    background: url('https://images.pexels.com/photos/225674/pexels-photo-225674.jpeg?auto=compress&cs=tinysrgb&w=1920') no-repeat center center/cover; /* Larger image */
+    position: relative; /* Important: Needed for positioning the pseudo-element */
+    background: url('https://images.pexels.com/photos/225674/pexels-photo-225674.jpeg?auto=compress&cs=tinysrgb&w=1920') no-repeat center center/cover;
     color: var(--background);
     text-align: center;
     min-height: 100vh;
-    display: flex; /* Use flexbox for centering */
-    flex-direction: column; /* Stack content vertically */
-    justify-content: center; /* Vertically center content */
-    align-items: center;  /* horizontally center content */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero::before { 
+    content: ""; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary); 
+    opacity: 0.5; 
+    z-index: 0; 
 }
 
 .hero-content {
-    max-width: 600px; /* Limit width of content */
-    margin: 0 auto; /* Center the content */
+    position: relative; 
+    z-index: 1; 
+    max-width: 600px; 
+    margin: 0 auto; 
 }
 
 .hero-content h1 {
     font-size: 3rem;
-    margin-bottom: 1rem; /* adds margin to the bottom of the h1 */
+    margin-bottom: 1rem;
 }
 
 .hero-content p {
     font-size: 1.2rem;
-    margin-bottom: 2rem; /* adds margin to the bottom of the p */
+    margin-bottom: 2rem; 
 }
 
 .hero-content .btn {
@@ -107,7 +123,7 @@ nav a:hover {
 
 /* Profile Section */
 .profile {
-    background: var(--background); /* Use --background variable */
+    background: var(--background); 
     padding: 40px 0;
     text-align: center;
 }
@@ -127,7 +143,7 @@ nav a:hover {
 /* Reservation Section */
 .reservation {
     padding: 40px 0;
-    background-color: white; /* Added background to improve readability */
+    background-color: white; 
 }
 
 .reservation .header h1 {
@@ -164,12 +180,11 @@ nav a:hover {
 }
 
 .btn[type="submit"] {
-    background: var(--primary); /* Use --primary variable */
-    color: white;
+    background: var(--primary); 
 }
 
 .btn[type="submit"]:hover {
-    background: var(--secondary); /* Use --secondary variable */
+    background: var(--secondary); 
 }
 
 .btn[type="reset"] {
@@ -184,7 +199,7 @@ nav a:hover {
 .billing {
     margin-top: 20px;
     padding: 20px;
-    background: var(--background); /* Use --background variable */
+    background: var(--background); 
     border-radius: 5px;
 }
 
@@ -199,8 +214,8 @@ nav a:hover {
 
 /* Contacts Section */
 .contacts {
-    background: var(--secondary); /* Use --text variable for background */
-    color: var(--text); /* Use --background variable for text */
+    background: var(--secondary);
+    color: var(--text);
     padding: 40px 0;
     text-align: center;
 }
