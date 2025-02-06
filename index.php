@@ -231,7 +231,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </section>
 
     <!-- Contacts Section -->
-    <section class="contacts">
+    <section id="contacts" class="contacts">
         <div class="container">
             <h2>Contact Us</h2>
             <p>Have questions or need assistance? Reach out to us!</p>
