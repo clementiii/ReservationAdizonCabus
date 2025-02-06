@@ -10,6 +10,16 @@
 
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  line-height: calc(1em + 0.5rem);
+}
 
 /* General Styles */
 body {
@@ -70,6 +80,7 @@ nav a:hover {
 .hero {
     position: relative; /* Important: Needed for positioning the pseudo-element */
     background: url('https://images.pexels.com/photos/225674/pexels-photo-225674.jpeg?auto=compress&cs=tinysrgb&w=1920') no-repeat center center/cover;
+    background-color: var(--primary);
     color: var(--background);
     text-align: center;
     min-height: 100vh;
@@ -129,6 +140,7 @@ nav a:hover {
 }
 
 .profile h2 {
+    color: var(--primary);
     font-size: 2rem;
     margin-bottom: 20px;
 }
@@ -137,19 +149,31 @@ nav a:hover {
     font-size: 1rem;
     line-height: 1.6;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 1em auto;
 }
 
 /* Reservation Section */
 .reservation {
     padding: 40px 0;
     background-color: white; 
+    display: flex;
+    justify-content: center;
+}
+
+.reservation .container {
+    width: 60%;
 }
 
 .reservation .header h1 {
+    color: var(--primary);
     text-align: center;
     font-size: 2rem;
     margin-bottom: 20px;
+}
+
+form h2 {
+    color: var(--primary);
+    margin-bottom: 0.5em;
 }
 
 .form-group label {
@@ -171,6 +195,7 @@ nav a:hover {
 }
 
 .btn {
+    color: var(--background);
     padding: 10px 20px;
     margin-right: 10px;
     cursor: pointer;
@@ -214,8 +239,8 @@ nav a:hover {
 
 /* Contacts Section */
 .contacts {
-    background: var(--secondary);
-    color: var(--text);
+    background: var(--primary);
+    color: var(--background);
     padding: 40px 0;
     text-align: center;
 }

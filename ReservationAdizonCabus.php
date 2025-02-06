@@ -229,7 +229,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <ul>
                 <li><strong>Phone:</strong> +1 (123) 456-7890</li>
                 <li><strong>Email:</strong> info@hotel102.com</li>
-                <li><strong>Address:</strong> 102 Luxury Street, Cityville, Country</li>
+                <li><strong>Address:</strong> 102 West Rembo, Taguig City</li>
             </ul>
         </div>
     </section>
