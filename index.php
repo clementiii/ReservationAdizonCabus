@@ -1,7 +1,13 @@
 <?php
+// Enable error reporting at the top
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+require_once 'config/database.php';
+session_start();
+
 // Function to calculate room rate
-function calculateRoomRate($capacity, $type)
-{
+function calculateRoomRate($capacity, $type) {
     $rates = [
         'single' => [
             'regular' => 100.00,
@@ -23,36 +29,48 @@ function calculateRoomRate($capacity, $type)
 }
 
 // Process form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $total = 0;
-    if (isset($_POST['calculate'])) {
-        $rate = calculateRoomRate($_POST['room_capacity'], $_POST['room_type']);
-        $days = (strtotime($_POST['check_out']) - strtotime($_POST['check_in'])) / (60 * 60 * 24);
-        $total = $rate * $days;
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['calculate'])) {
+    $rate = calculateRoomRate($_POST['room_capacity'], $_POST['room_type']);
+    $days = (strtotime($_POST['check_out']) - strtotime($_POST['check_in'])) / (60 * 60 * 24);
+    $total = $rate * $days;
 
-        // Apply payment type charges
-        switch ($_POST['payment_type']) {
-            case 'check':
-                $total *= 1.05; // Add 5%
-                break;
-            case 'credit':
-                $total *= 1.10; // Add 10%
-                break;
-            case 'cash':
-                // Apply cash discounts
-                if ($days >= 6) {
-                    $total *= 0.85; // 15% discount
-                } elseif ($days >= 3) {
-                    $total *= 0.90; // 10% discount
-                }
-                break;
-        }
+    // Apply payment type charges
+    switch ($_POST['payment_type']) {
+        case 'check':
+            $total *= 1.05; // Add 5%
+            break;
+        case 'credit':
+            $total *= 1.10; // Add 10%
+            break;
+        case 'cash':
+            if ($days >= 6) {
+                $total *= 0.85; // 15% discount
+            } elseif ($days >= 3) {
+                $total *= 0.90; // 10% discount
+            }
+            break;
     }
+
+    $_SESSION['reservation_data'] = [
+        'name' => $_POST['name'],
+        'address' => $_POST['address'],
+        'contact' => $_POST['contact'],
+        'check_in' => $_POST['check_in'],
+        'check_out' => $_POST['check_out'],
+        'room_capacity' => $_POST['room_capacity'],
+        'room_type' => $_POST['room_type'],
+        'payment_type' => $_POST['payment_type'],
+        'rate' => $rate,
+        'days' => $days,
+        'total' => $total
+    ];
+    
+    header("Location: process_reservation.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,12 +78,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-
 <body>
-    <!-- Hero Section -->
+    <!-- Header and Navigation -->
     <header>
         <nav>
             <div class="logo">Hotel 102</div>
@@ -74,10 +90,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li><a href="#profile">About</a></li>
                 <li><a href="#reservation">Reservation</a></li>
                 <li><a href="#contacts">Contact</a></li>
+                <li><a href="admin_login.php">Admin</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Welcome to Hotel 102</h1>
@@ -87,14 +105,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </section>
 
     <!-- Company Profile Section -->
-    <section class="profile">
+    <section class="profile" id="profile">
         <div class="container">
             <h2>About Hotel 102</h2>
-            <p>Hotel 102 is a luxurious hotel located in the heart of the city. We offer world-class amenities, spacious
-                rooms, and exceptional service to ensure a memorable stay for our guests. Whether you're here for
-                business or leisure, Hotel 102 is your home away from home.</p>
-            <p>Our mission is to provide an unforgettable experience with a blend of comfort, elegance, and convenience.
-            </p>
+            <p>Hotel 102 is a luxurious hotel located in the heart of the city.</p>
         </div>
     </section>
 
@@ -105,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h1>Hotel Reservation System</h1>
             </div>
 
-            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <form method="POST" action="">
                 <!-- Guest Information -->
                 <h2>Guest Information</h2>
                 <div class="form-group">
@@ -200,48 +214,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <td>Suite</td>
                         <td>1,000.00</td>
                     </tr>
-                </table>
+                    </table>
+<div class="buttons">
+    <input type="submit" name="calculate" value="Submit Reservation" class="btn">
+    <input type="reset" value="Clear Entry" class="btn">
+</div>
+</form>
+</div>
+</section>
 
-                <div class="buttons">
-                    <input type="submit" name="calculate" value="Submit Reservation" class="btn">
-                    <input type="reset" value="Clear Entry" class="btn">
-                </div>
+<!-- Contacts Section -->
+<section id="contacts" class="contacts">
+<div class="container">
+<h2>Contact Us</h2>
+<ul>
+<li><strong>Phone:</strong> +1 (123) 456-7890</li>
+<li><strong>Email:</strong> info@hotel102.com</li>
+</ul>
+</div>
+</section>
 
-                <?php if (isset($_POST['calculate'])): ?>
-                    <!-- Billing Information -->
-                    <div class="billing">
-                        <h2>Billing Information</h2>
-                        <p><strong>Room Rate:</strong> PHP
-                            <?php echo number_format(calculateRoomRate($_POST['room_capacity'], $_POST['room_type']), 2); ?>
-                            per day</p>
-                        <p><strong>Number of Days:</strong> <?php echo $days; ?></p>
-                        <p><strong>Payment Type:</strong> <?php echo ucfirst($_POST['payment_type']); ?></p>
-                        <?php if ($_POST['payment_type'] == 'check'): ?>
-                            <p><strong>Additional Charge:</strong> 5%</p>
-                        <?php elseif ($_POST['payment_type'] == 'credit'): ?>
-                            <p><strong>Additional Charge:</strong> 10%</p>
-                        <?php elseif ($_POST['payment_type'] == 'cash' && $days >= 3): ?>
-                            <p><strong>Discount:</strong> <?php echo ($days >= 6) ? '15%' : '10%'; ?></p>
-                        <?php endif; ?>
-                        <p><strong>Total Amount:</strong> PHP <?php echo number_format($total, 2); ?></p>
-                    </div>
-                <?php endif; ?>
-            </form>
-        </div>
-    </section>
+<script>
+document.querySelector('form').addEventListener('submit', function(e) {
+const requiredFields = document.querySelectorAll('[required]');
+let isValid = true;
 
-    <!-- Contacts Section -->
-    <section id="contacts" class="contacts">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <p>Have questions or need assistance? Reach out to us!</p>
-            <ul>
-                <li><strong>Phone:</strong> +1 (123) 456-7890</li>
-                <li><strong>Email:</strong> info@hotel102.com</li>
-                <li><strong>Address:</strong> 102 West Rembo, Taguig City</li>
-            </ul>
-        </div>
-    </section>
+requiredFields.forEach(field => {
+if (!field.value.trim()) {
+alert(`Please fill in ${field.previousElementSibling.textContent}`);
+isValid = false;
+}
+});
+
+if (!isValid) {
+e.preventDefault();
+}
+});
+</script>
 </body>
-
 </html>
