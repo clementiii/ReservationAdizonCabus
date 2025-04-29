@@ -401,3 +401,21 @@ form h2 {
     margin-bottom: 20px; /* Add margin below the error */
     text-align: center;
 }
+
+/* Footer Styles */
+footer {
+    color: var(--text); 
+    padding: 20px 0; 
+    text-align: center; 
+}
+
+footer .container {
+    max-width: 800px; /* Match nav container width */
+    margin: 0 auto; /* Center container */
+
+}
+
+footer p {
+    margin: 0; /* Remove default paragraph margin */
+    font-size: 0.9em;
+}
