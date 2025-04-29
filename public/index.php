@@ -19,6 +19,7 @@ $controllerName = '';
 $methodName = '';
 
 switch ($action) {
+    // Reservation routes
     case 'showReservation':
         $controllerName = 'ReservationController';
         $methodName = 'showForm';
@@ -27,6 +28,8 @@ switch ($action) {
         $controllerName = 'ReservationController';
         $methodName = 'process';
         break;
+
+    // --- Admin Routes ---
     case 'adminLogin':
         $controllerName = 'AdminController';
         $methodName = 'showLogin';
@@ -43,9 +46,16 @@ switch ($action) {
         $controllerName = 'AdminController';
         $methodName = 'logout';
         break;
-    // Add more admin actions (view, update, delete reservations) here
-    // e.g., case 'adminViewReservations': $controllerName = 'AdminController'; $methodName = 'listReservations'; break;
+    case 'adminUpdateStatus': // New route for updating status
+        $controllerName = 'AdminController';
+        $methodName = 'updateReservationStatus';
+        break;
+    case 'adminDeleteReservation': // New route for deleting
+        $controllerName = 'AdminController';
+        $methodName = 'deleteReservation';
+        break;
 
+    // --- Home Route ---
     case 'home':
     default:
         $controllerName = 'HomeController';
