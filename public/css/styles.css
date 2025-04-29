@@ -152,6 +152,44 @@ nav a:hover {
     margin: 1em auto;
 }
 
+.profile .features {
+    margin-top: 30px;
+    text-align: left; /* Align text left within the features section */
+    max-width: 700px; /* Slightly wider for features */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile .features h3 {
+    color: var(--accent); /* Use accent color for subheading */
+    margin-bottom: 15px;
+    text-align: center; /* Center the 'Why Choose Us?' heading */
+}
+
+.profile .features ul {
+    list-style: none;
+    padding: 0;
+    display: grid; /* Use grid for layout */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Slightly smaller min width */
+    gap: 20px; /* Slightly increase gap */
+    justify-content: center; /* Center items if they don't fill the row */
+}
+
+.profile .features li {
+    background-color: #fdfdfd; /* Slightly off-white background for items */
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    display: flex; /* Align icon and text */
+    align-items: center;
+}
+
+.profile .features li i {
+    color: var(--primary);
+    margin-right: 10px; /* Space between icon and text */
+    font-size: 1.2em; /* Slightly larger icon */
+}
+
 /* Reservation Section */
 .reservation {
     padding: 40px 0;
@@ -239,25 +277,101 @@ form h2 {
 
 /* Contacts Section */
 .contacts {
-    background: var(--primary);
-    color: var(--background);
-    padding: 40px 0;
+    background: var(--primary); /* Change background to primary color */
+    color: var(--background); /* Change default text color to light */
+    padding: 60px 0; /* Increase padding */
     text-align: center;
 }
 
 .contacts h2 {
     font-size: 2rem;
     margin-bottom: 20px;
+    color: var(--background); /* Change heading color to light */
+}
+
+.contacts .container {
+    max-width: 900px; /* Wider container for contacts */
+    margin-left: auto; /* Ensure container is centered */
+    margin-right: auto; /* Ensure container is centered */
+}
+
+.contacts .contact-details {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 30px; /* Space between info and map/form */
+    margin-top: 30px;
+    text-align: left; /* Align text left */
+}
+
+.contacts .contact-info,
+.contacts .contact-map { /* Style both columns */
+    flex: 1; /* Allow flexible sizing */
+    min-width: 300px; /* Minimum width before wrapping */
+}
+
+.contacts h3 {
+    color: var(--accent); /* Accent color for subheadings */
+    margin-bottom: 15px;
+    color: var(--background); /* Change subheading color to light */
 }
 
 .contacts ul {
     list-style: none;
     padding: 0;
+    margin-bottom: 20px; /* Add space below list */
 }
 
 .contacts ul li {
     font-size: 1rem;
+    margin-bottom: 15px; /* Increase space between items */
+    display: flex;
+    align-items: center;
+    color: var(--background); /* Ensure list item text is light */
+}
+
+.contacts ul li i {
+    margin-right: 10px;
+    width: 20px; /* Fixed width for alignment */
+    text-align: center;
+    color: var(--accent); /* Use accent color for icons */
+}
+
+.contacts ul li a {
+    color: var(--background); /* Change link color to light */
+    text-decoration: none;
+    font-weight: bold; /* Make links slightly bolder */
+}
+
+.contacts ul li a:hover {
+    color: var(--accent); /* Use accent color on hover */
+    text-decoration: none; /* Remove underline on hover if desired */
+}
+
+.contacts .social-media {
+    margin-top: 20px;
+}
+
+.contacts .social-media h4 {
     margin-bottom: 10px;
+    color: var(--background); /* Change subheading color to light */
+}
+
+.contacts .social-media a {
+    color: var(--background); /* Change icon color to light */
+    font-size: 1.5rem; /* Larger icons */
+    margin-right: 15px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contacts .social-media a:hover {
+    color: var(--accent); /* Use accent color on hover */
+}
+
+.contacts .contact-map div {
+    background-color: var(--secondary); /* Lighter background for map placeholder */
+    color: var(--text); /* Darker text for placeholder */
+    border: none; /* Remove border if desired */
 }
 
 /* Admin Styles */
