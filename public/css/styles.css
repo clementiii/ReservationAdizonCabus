@@ -325,17 +325,79 @@ form h2 {
     background-color: #c82333;
 }
 
-.admin-login {
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+/* Specific styles for the Admin Login Page */
+.admin-login-page {
+    background-color: var(--background); /* Use theme background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: "Raleway", Arial, sans-serif; /* Ensure theme font */
 }
 
-.admin-login h1 {
+.login-container {
+    background: white; 
+    padding: 30px 40px;
+    border-radius: 8px;
+    /* Updated shadow */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    /* Updated width: Target 50%, with min/max */
+    width: 50%; 
+    max-width: 500px; /* Adjust max width as needed */
+    min-width: 350px; /* Adjust min width as needed */
     text-align: center;
-    color: var(--primary);
+}
+
+.login-container h1 {
+    margin-bottom: 25px;
+    color: var(--primary); /* Use primary theme color */
+    font-weight: bold; /* Make it bolder */
+}
+
+/* Use existing .form-group styles, potentially add specific overrides if needed */
+.login-container .form-group {
     margin-bottom: 20px;
+    text-align: left;
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--text); /* Use standard text color */
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; 
+    font-family: "Raleway", Arial, sans-serif; /* Ensure theme font */
+}
+
+/* Ensure the standard .btn class is styled correctly for this context */
+.login-container .btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary); /* Use primary theme color */
+    color: white; /* Keep white text */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    font-family: "Raleway", Arial, sans-serif; /* Ensure theme font */
+    font-weight: bold;
+}
+
+.login-container .btn:hover {
+    background-color: var(--accent); /* Use accent color on hover */
+}
+
+/* Ensure alert styles are applied correctly */
+.login-container .alert.error {
+    margin-bottom: 20px; /* Add margin below the error */
+    text-align: center;
 }
