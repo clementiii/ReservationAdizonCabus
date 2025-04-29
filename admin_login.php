@@ -2,12 +2,10 @@
 require_once 'config/database.php';
 session_start();
 
-// Simple authentication (in a real app, use proper password hashing)
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
     
-    // In a real app, use a proper user table and password hashing
     if ($username === 'admin' && $password === 'admin123') {
         $_SESSION['admin_logged_in'] = true;
         header('Location: admin.php');

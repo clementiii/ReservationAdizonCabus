@@ -90,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['calculate'])) {
                 <li><a href="#profile">About</a></li>
                 <li><a href="#reservation">Reservation</a></li>
                 <li><a href="#contacts">Contact</a></li>
-                <li><a href="admin_login.php">Admin</a></li>
+                <!-- <li><a href="admin_login.php">Admin</a></li> -->
             </ul>
         </nav>
     </header>

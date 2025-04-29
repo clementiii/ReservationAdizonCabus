@@ -261,8 +261,8 @@ form h2 {
 }
 
 /* Admin Styles */
-.admin-content {
-    padding: 40px 0;
+.admin-content .contaienr {
+    padding: 4rem;
 }
 
 .alert {
